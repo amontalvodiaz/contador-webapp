@@ -1,10 +1,14 @@
 import React from "react";
-import Login from "../Login";
+import {Col, Container, Row} from "react-bootstrap";
 
 
 const Home = () =>{
     return (
-        <Login/>
+        <Container>
+            <Row>
+                <Col>this is Home</Col>
+            </Row>
+        </Container>
     )
 }
 
