@@ -4,6 +4,8 @@ import './styles/main.css';
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Header from "./components/Header";
+import Register from "./components/Register";
+import Profile from "./components/Profile";
 
 const App = () => {
     return (<main>
@@ -11,6 +13,8 @@ const App = () => {
             <Router>
                 <Login path='/'/>
                 <Home path='home'/>
+                <Register path='register'/>
+                <Profile path='profile'/>
             </Router>
 
             <link
