@@ -1,10 +1,16 @@
-import React from "react";
-import Login from "../Login";
+import React,{Suspense} from "react";
+import {Col, Container, Row} from "react-bootstrap";
 
 
-const Home = () =>{
+const Home = ({user}) =>{
+    console.log("Home " + user.rfc)
     return (
-        <Login/>
+        <Container>
+
+            <Row>
+                <Col>this is Home</Col>
+            </Row>
+        </Container>
     )
 }
 
