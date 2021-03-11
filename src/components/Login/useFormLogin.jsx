@@ -1,7 +1,8 @@
-import {useState,useEffect} from "react";
+import {useState} from "react";
 import User from "../models/User";
+import validator from "../../tools/validator";
 
-const useFormLogin = (validate,logMeIn) =>{
+const useFormLogin = (logMeIn) =>{
     const [values,setValues] = useState({
         user:'',
         password:''
@@ -19,10 +20,10 @@ const useFormLogin = (validate,logMeIn) =>{
 
     const handleClick = event =>{
         event.preventDefault()
-        setErrors(validate(values))
-        console.log(errors.hasErrors)
+        const  {errors} = validator(values)
+        setErrors(errors)
         if (!errors.hasErrors) {
-             //logMeIn(new User(values.user, true))
+            logMeIn(new User(values.user, true))
         }
     }
 

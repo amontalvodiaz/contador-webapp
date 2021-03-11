@@ -1,7 +1,6 @@
-import React, {useState} from "react";
-import {Button, Col, Container, Form, FormControl, Nav, Navbar, Row} from "react-bootstrap";
-import {Link, Redirect, withRouter} from "react-router-dom";
-import User from "../models/User";
+import React from "react";
+import {Button, Col,  Form, FormControl, Nav, Navbar, Row} from "react-bootstrap";
+import {Link,  withRouter} from "react-router-dom";
 
 const Header = ({user,history,logout}) => {
     const show = user.isActive ? {}:{display: "none"} ;
