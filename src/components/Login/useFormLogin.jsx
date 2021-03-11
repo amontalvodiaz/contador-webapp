@@ -1,6 +1,5 @@
 import {useState} from "react";
-import User from "../models/User";
-import validator from "../../tools/validator";
+import validator from "../../modules/tools/validator";
 
 const useFormLogin = (logMeIn) =>{
     const [values,setValues] = useState({
@@ -11,11 +10,11 @@ const useFormLogin = (logMeIn) =>{
     const [errors, setErrors] = useState({})
 
     const handleChange = event =>{
+        const {name,value} = event.target
         setValues({
             ...values,
-            [event.target.name] : event.target.value
+            [name] : value
         })
-
     }
 
     const handleClick = event =>{
@@ -23,7 +22,9 @@ const useFormLogin = (logMeIn) =>{
         const  {errors} = validator(values)
         setErrors(errors)
         if (!errors.hasErrors) {
-            logMeIn(new User(values.user, true))
+            logMeIn({
+                rfc: values.user,
+                isActive: true})
         }
     }
 

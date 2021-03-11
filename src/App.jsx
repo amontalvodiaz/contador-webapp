@@ -14,17 +14,19 @@ import Login from "./components/Login";
 import Header from "./components/Header";
 import Register from "./components/Register";
 import Profile from "./components/Profile";
-import User from "./components/models/User";
 
 
 const Home = lazy(() => import( "./components/Home"))
 const App = () => {
-    const [user, setUser] = useState(new User())
-    const logMeIn = (userSession) =>{
+    const [user, setUser] = useState({
+        name: '',
+        rfc: '',
+        password: ''
+    })
+    const logMeIn = (userSession) => {
         setUser(userSession)
     }
-    const logMeOut = () =>{
-
+    const logMeOut = () => {
         setUser({})
     }
     return (<main>
@@ -38,20 +40,21 @@ const App = () => {
                                 (<Login logMeIn={logMeIn} state={useState}/>)
                             }
                         </Route>
-
-                        <Route path="/home">
-                            {user.isActive ?
-                                (<Home user={user}/>) :
-                                (<Redirect to="/"/>)
-                            }
-                        </Route>
-
                         <Route path="/register">
                             <Register/>
                         </Route>
-                        <Route path="/profile">
-                            <Profile/>
-                        </Route>
+                        {user.isActive ?
+                            (<Switch>
+                                <Route path="/home">
+                                    <Home user={user}/>
+                                </Route>
+                                <Route path="/profile">
+                                    <Profile user={user}/>
+                                </Route>
+                            </Switch>)
+                            :
+                            (<Redirect to="/"/>)
+                        }
                     </Switch>
                 </Suspense>
             </Router>
