@@ -9,7 +9,7 @@ const Header = ({user,history,logout}) => {
         event.preventDefault()
         logout()
     }
-    return (<Container>
+    return (<header>
         <Row>
             <Col>
                 <Navbar style={show}>
@@ -33,7 +33,7 @@ const Header = ({user,history,logout}) => {
 
             </Col>
         </Row>
-    </Container>)
+    </header>)
 }
 
 export default withRouter(Header)

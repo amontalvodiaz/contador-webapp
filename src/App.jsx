@@ -20,11 +20,12 @@ import User from "./components/models/User";
 const Home = lazy(() => import( "./components/Home"))
 const App = () => {
     const [user, setUser] = useState(new User())
-    const logMeIn = (username,password) =>{
-        setUser(new User(username,true))
+    const logMeIn = (userSession) =>{
+        setUser(userSession)
     }
     const logMeOut = () =>{
-        setUser(new User())
+
+        setUser({})
     }
     return (<main>
             <Router>
