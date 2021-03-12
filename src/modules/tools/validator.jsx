@@ -1,4 +1,4 @@
-export default function validator(values){
+const validator = (values) => {
     let errors = {}
     const userIsRequiredMsj = "RFC es requerido"
     const passwordIsRequiredMsj = "Contraseña es requerida"
@@ -10,8 +10,10 @@ export default function validator(values){
         errors.password = passwordIsRequiredMsj
     }
     for (let valuesKey in errors) {
-        errors.hasErrors = true
+        errors.hasErrors = !!valuesKey
+        break
     }
-    return errors
+    return {errors}
 }
 
+export default validator

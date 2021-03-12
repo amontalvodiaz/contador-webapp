@@ -1,51 +1,11 @@
-import React, {useState} from "react";
+import React from "react";
 import {Container, Row, Col, InputGroup, FormControl, Button, Alert} from "react-bootstrap";
 import useFormLogin from "./useFormLogin";
-import validator from "../../tools/validator";
-import User from "../models/User";
 
 
 const Login = ({logMeIn}) => {
-    let hasErrors = false;
-    const [values,setValues] = useState({
-        user:'',
-        password:''
-    })
+    const {handleChange, values, handleClick,errors} = useFormLogin(logMeIn)
 
-    const [errors, setErrors] = useState({})
-
-    const handleChange = event =>{
-        setValues({
-            ...values,
-            [event.target.name] : event.target.value
-        })
-
-    }
-
-    const handleClick = event =>{
-        event.preventDefault()
-
-
-        let errors = {}
-        const userIsRequiredMsj = "RFC es requerido"
-        const passwordIsRequiredMsj = "Contraseña es requerida"
-        if(!values.user.trim()){
-            errors.user = userIsRequiredMsj
-        }
-
-        if(!values.password.trim()){
-            errors.password = passwordIsRequiredMsj
-        }
-        setErrors(errors)
-        for (let valuesKey in errors) {
-            hasErrors = true
-        }
-
-        console.log(hasErrors)
-        if (!hasErrors) {
-            logMeIn(new User(values.user, true))
-        }
-    }
     return (
         <Container className="justify-content-between">
 
