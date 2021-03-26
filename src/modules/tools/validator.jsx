@@ -2,8 +2,9 @@ const validator = (values) => {
     let errors = {}
     const userIsRequiredMsj = "RFC es requerido"
     const passwordIsRequiredMsj = "Contraseña es requerida"
-    if(!values.user.trim()){
-        errors.user = userIsRequiredMsj
+
+    if(!values.rfc.trim()){
+        errors.rfc = userIsRequiredMsj
     }
 
     if(!values.password.trim()){

@@ -1,6 +1,7 @@
 import React from "react";
 import {Container, Row, Col, InputGroup, FormControl, Button, Alert} from "react-bootstrap";
 import useFormLogin from "./useFormLogin";
+import MessageError from "../../modules/messages/getErrorMessage";
 
 
 const Login = ({logMeIn}) => {
@@ -18,13 +19,13 @@ const Login = ({logMeIn}) => {
                         <FormControl
                             aria-label="RFC"
                             aria-describedby="rfc"
-                            name="user"
+                            name="rfc"
                             onChange={handleChange}
-                            value={values.user}
+                            value={values.rfc}
                         />
 
                     </InputGroup>
-                    {errors.user && <Alert variant="danger">{errors.user} </Alert>}
+                    <MessageError message = {errors.rfc}/>
                     <InputGroup>
                         <InputGroup.Prepend>
                             <InputGroup.Text id="pass">Contraseña</InputGroup.Text>
@@ -38,7 +39,7 @@ const Login = ({logMeIn}) => {
                             onChange={handleChange}
                         />
                     </InputGroup>
-                    {errors.password && <Alert variant="danger">{errors.password} </Alert>}
+                    <MessageError message = {errors.password}/>
                 </Col>
             </Row>
             <Row className="justify-content-sm-center">

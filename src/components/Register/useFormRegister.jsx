@@ -1,10 +1,12 @@
 import {useState} from "react";
 import validator from "../../modules/tools/validator";
 
-const useFormLogin = (logMeIn) =>{
-    const [values,setValues] = useState({
+const useFormRegister = () => {
+    const [values, setValues] = useState({
         rfc:'',
-        password:''
+        password:'',
+        confirmPassword:'',
+        email:''
     })
 
     const [errors, setErrors] = useState({})
@@ -17,18 +19,16 @@ const useFormLogin = (logMeIn) =>{
         })
     }
 
-    const handleClick = event =>{
+    const handleSubmit = event =>{
         event.preventDefault()
         const  {errors} = validator(values)
+        console.log(errors)
         setErrors(errors)
         if (!errors.hasErrors) {
-            logMeIn({
-                rfc: values.rfc,
-                isActive: true})
+            //todo logic to save login information
         }
     }
-
-return {handleChange, values, handleClick,errors}
+    return {handleChange, values, handleSubmit,errors}
 }
 
-export default useFormLogin
+export default useFormRegister
